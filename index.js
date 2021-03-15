@@ -20,14 +20,7 @@ class Profile extends Component {
           <Formik
             initialValues={{ email: '' }}
             onSubmit={(values, { setSubmitting }) => {
-              dispatch(
-                setSnackbar(
-                  true,
-                  { vertical: 'top', horizontal: 'center' },
-                  'success',
-                  'We have sent a link to reset your password. please Check Mail'
-                )
-              );
+              console.log('submit form')
             }}
             validationSchema={Yup.object().shape({
               email: Yup.string().email().required('Email is required'),
