@@ -20,9 +20,12 @@ class Profile extends Component {
           <Formik
             initialValues={{ email: '' }}
             onSubmit={(values, { setSubmitting }) => {
-              console.log('submit form')
+              console.log('submit form', values);
             }}
             validationSchema={Yup.object().shape({
+              firstname: Yup.required('First Name is required'),
+              lastname: Yup.required('Last Name is required'),
+              number: Yup.required('Number is required'),
               email: Yup.string().email().required('Email is required'),
             })}
           >
@@ -103,7 +106,7 @@ class Profile extends Component {
                     </div>
                   </div>
                   <div class="panel-footer">
-                    <button class="blue-btn">Update</button>
+                    <button type="submit" class="blue-btn">Update</button>
                   </div>
                 </form>
               );
