@@ -3,8 +3,7 @@ import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
-class Profile extends Component {
-  render() {
+const Profile = () => {
     return (
       <section class="content-wapper">
         <div class="breadcrumb">
@@ -23,9 +22,9 @@ class Profile extends Component {
               console.log('submit form', values);
             }}
             validationSchema={Yup.object().shape({
-              firstname: Yup.required('First Name is required'),
-              lastname: Yup.required('Last Name is required'),
-              number: Yup.required('Number is required'),
+              firstname: Yup.string().required('First Name is required'),
+              lastname: Yup.string().required('Last Name is required'),
+              number: Yup.string().required('Number is required'),
               email: Yup.string().email().required('Email is required'),
             })}
           >
@@ -50,8 +49,9 @@ class Profile extends Component {
                             class="form-control"
                             type="text"
                             name="firstname"
-                            value={this.firstname}
-                            onChange={this.handleChange}
+                            value={firstname}
+                            onChange={handleChange} error={errors.firstname}
+                            touched={touched.firstname}
                           />
                         </div>
                       </div>
@@ -62,8 +62,9 @@ class Profile extends Component {
                             class="form-control"
                             type="text"
                             name="lastname"
-                            value={this.lastname}
-                            onChange={this.handleChange}
+                            value={lastname}
+                            onChange={handleChange} error={errors.lastname}
+                            touched={touched.lastname}
                           />
                         </div>
                       </div>
@@ -74,8 +75,9 @@ class Profile extends Component {
                             class="form-control"
                             type="email"
                             name="email"
-                            value={this.email}
-                            onChange={this.handleChange}
+                            value={email}
+                            onChange={handleChange} error={errors.email}
+                            touched={touched.email}
                           />
                         </div>
                       </div>
@@ -88,8 +90,9 @@ class Profile extends Component {
                             class="form-control"
                             type="text"
                             name="number"
-                            value={this.number}
-                            onChange={this.handleChange}
+                            value={number}
+                            onChange={handleChange} error={errors.number}
+                            touched={touched.number}
                           />
                         </div>
                       </div>
@@ -115,6 +118,5 @@ class Profile extends Component {
         </div>
       </section>
     );
-  }
 }
 export default Profile;
